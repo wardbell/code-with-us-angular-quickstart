@@ -65,11 +65,11 @@ restart it. No worries; it's pretty quick.
 E2E tests are in the `e2e` directory, side by side with the `app` folder.
 Their filenames must end in `.e2e-spec.ts`.
 
-Look for the example `e2e/step-0.e2e-spec.ts`.
+Look for the example `e2e/chapter-1.e2e-spec.ts`.
 Add more `.e2e-spec.js` files as you wish (although one usually suffices for small projects);
 we configured protractor to find them.
 
-Thereafter, run them with `npm run e2e`.
+Thereafter, run them with `npm run e2e` (or `npm run e2e:fast`).
 
 That command first compiles, then simultaneously starts the Http-Server at `localhost:8080`
 and launches protractor.  

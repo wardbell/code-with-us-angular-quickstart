@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'step-98',
+  selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
     <nav>
@@ -13,5 +13,5 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  title = 'Tour of 98';
+  title = 'Tour of 99';
 }

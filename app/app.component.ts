@@ -1,67 +1,73 @@
-import { Component } from '@angular/core';
-import { Location }  from '@angular/common';
-import { Router }    from '@angular/router';
+import {
+  Component, ComponentFactoryResolver, Directive, ViewContainerRef
+} from '@angular/core';
 
-import { routes as finalRoutes }  from './final/app-routing.module';
-import { routes as step98Routes } from './step-98/app.module';
-import { routes as step99Routes } from './step-99/app.module';
+import { Location }       from '@angular/common';
+import { Router, Routes } from '@angular/router';
 
-// Steps which have routes and their routes
-const stepRoutes = {
-    'Final' : finalRoutes,
-    'Step 98': step98Routes,
-    'Step 99': step99Routes,
+import { AppComponent as FinalComponent } from './final/app.component';
+import { AppComponent as C01Component }   from './chapter-01/app.component';
+import { AppComponent as C01ecComponent } from './chapter-01-exercise-completed/app.component';
+import { AppComponent as C08Component }   from './chapter-08/app.component';
+import { AppComponent as C09Component }   from './chapter-09/app.component';
+
+import { routes as finalRoutes } from './final/app-routing.module';
+import { routes as c08Routes }   from './chapter-08/app.module';
+import { routes as c09Routes }   from './chapter-09/app.module';
+
+const noRoutes: Routes = [];
+
+// chapters: chapter components, some of which which have routes and their routes
+const chapters: { [index: string]: { component: any, routes: Routes } } = {
+
+  'Final':    { component: FinalComponent, routes: finalRoutes },
+  'Chapter 1': { component: C01Component, routes: noRoutes },
+  'Chapter 1: exercise (completed)': { component: C01ecComponent, routes: noRoutes },
+  'Chapter 8': { component: C08Component, routes: c08Routes },
+  'Chapter 9': { component: C09Component, routes: c09Routes },
 };
 
-// Todo: Inject components dynamically rather than list them in template
+@Directive( {selector: '[chapterView]'})
+export class ChapterViewDirective {
+  constructor(private viewContainerRef: ViewContainerRef) { }
+}
 
 @Component({
   selector: 'my-app',
   template: `
-    Step to run:
-    <select [value]="step" (change)="onStepChange($event.target.value)">
-      <option *ngFor="let step of steps">{{step}}</option>
-    </select>
+    <label>Chapter to run:
+      <select (change)="onChapterChange($event.target.value)">
+        <option *ngFor="let chapter of chapters">{{chapter}}</option>
+      </select>
+    </label>
     <hr>
-    <final   *ngIf="isVisible('Final')"></final>
-    <step-0  *ngIf="isVisible('Step 0')"></step-0>
-    <step-1  *ngIf="isVisible('Step 1')"></step-1>
-    <step-98 *ngIf="isVisible('Step 98')"></step-98>
-    <step-99 *ngIf="isVisible('Step 99')"></step-99>
-  `
+    <div chapterView></div>`
 })
 export class AppComponent {
 
-  steps = [
-    'Final',
-    'Step 0',
-    'Step 1',
-    'Step 98',
-    'Step 99',
-  ];
+  chapters = Object.keys(chapters);
 
-  step = this.steps[0];
-
-  constructor(private router: Router, private location: Location) { }
-
-  isVisible(step: string) { return step === this.step; }
-
-  onStepChange(step: string) {
-    this.step = step;
-    this.location.go('/');
-
-    const routes = stepRoutes[this.step];
-
-    if (routes) {
-      // Re-configure the router with routes for this step
-      this.router.resetConfig(routes);
-
-      // Crashes if go from routed component to routed component
-      // but if pass briefly through non-routed component, all is well (weird)
-      const trueStep = this.step;
-      this.step = 'nada'; // non-routed component
-      setTimeout(() => this.step = trueStep, 0);
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private location: Location,
+    private router: Router,
+    private viewContainerRef: ViewContainerRef) {
+      this.setView(chapters[this.chapters[0]].component); // Set initial view
     }
+
+  onChapterChange(chapter: string) {
+    const {component, routes} = chapters[chapter];
+    this.setView(component);
+    this.router.resetConfig(routes);
+    this.location.go('/');
   }
 
+  setView(component?: { new(): any }): void {
+    this.viewContainerRef.clear();
+
+    if (component) {
+      const factory = this.componentFactoryResolver.resolveComponentFactory(component);
+      this.viewContainerRef.createComponent(factory);
+    }
+  }
 }

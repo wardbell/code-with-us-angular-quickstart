@@ -2,25 +2,26 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
-import { AppComponent }  from './app.component';
+import { AppModule as Final }      from './final/app.module';
+import { AppModule as C01Module }   from './chapter-01/app.module';
+import { AppModule as C01ecModule } from './chapter-01-exercise-completed/app.module';
+import { AppModule as C08Module }   from './chapter-08/app.module';
+import { AppModule as C09Module }   from './chapter-09/app.module';
 
-import { AppModule as Final }        from './final/app.module';
-import { AppModule as Step0Module }  from './step-0/app.module';
-import { AppModule as Step1Module }  from './step-1/app.module';
-import { AppModule as Step98Module } from './step-98/app.module';
-import { AppModule as Step99Module } from './step-99/app.module';
+import { AppComponent, ChapterViewDirective } from './app.component';
 
 @NgModule({
   imports:      [
     BrowserModule,
     FormsModule,
     Final,
-    Step0Module,
-    Step1Module,
-    Step98Module,
-    Step99Module,
+    C01Module,
+    C01ecModule,
+    C08Module,
+    C09Module,
  ],
-  declarations: [ AppComponent ],
+
+  declarations: [ AppComponent, ChapterViewDirective ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule {
