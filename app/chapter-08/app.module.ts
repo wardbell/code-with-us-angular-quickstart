@@ -24,7 +24,6 @@ export const routes: Routes = [
     DashboardComponent,
     HeroesComponent,
   ],
-  exports:   [ AppComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

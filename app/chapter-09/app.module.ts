@@ -41,7 +41,6 @@ export const routes: Routes = [
     HeroSearchComponent
   ],
   providers: [ HeroService ],
-  exports:   [ AppComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -2,9 +2,11 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
-import { AppModule as Final }      from './final/app.module';
+import { AppModule as Final }       from './final/app.module';
 import { AppModule as C01Module }   from './chapter-01/app.module';
-import { AppModule as C01ecModule } from './chapter-01-exercise-completed/app.module';
+import { AppModule as C02Module }   from './chapter-02/app.module';
+import { AppModule as C02ecModule } from './chapter-02-exercise-completed/app.module';
+import { AppModule as C04Module }   from './chapter-02/app.module';
 import { AppModule as C08Module }   from './chapter-08/app.module';
 import { AppModule as C09Module }   from './chapter-09/app.module';
 
@@ -16,7 +18,8 @@ import { AppComponent, ChapterViewDirective } from './app.component';
     FormsModule,
     Final,
     C01Module,
-    C01ecModule,
+    C02Module, C02ecModule,
+    C04Module,
     C08Module,
     C09Module,
  ],

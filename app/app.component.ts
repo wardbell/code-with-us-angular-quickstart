@@ -7,7 +7,9 @@ import { Router, Routes } from '@angular/router';
 
 import { AppComponent as FinalComponent } from './final/app.component';
 import { AppComponent as C01Component }   from './chapter-01/app.component';
-import { AppComponent as C01ecComponent } from './chapter-01-exercise-completed/app.component';
+import { AppComponent as C02Component }   from './chapter-02/app.component';
+import { AppComponent as C02ecComponent } from './chapter-02-exercise-completed/app.component';
+import { AppComponent as C04Component }   from './chapter-04/app.component';
 import { AppComponent as C08Component }   from './chapter-08/app.component';
 import { AppComponent as C09Component }   from './chapter-09/app.component';
 
@@ -22,7 +24,9 @@ const chapters: { [index: string]: { component: any, routes: Routes } } = {
 
   'Final':    { component: FinalComponent, routes: finalRoutes },
   'Chapter 1': { component: C01Component, routes: noRoutes },
-  'Chapter 1: exercise (completed)': { component: C01ecComponent, routes: noRoutes },
+  'Chapter 2': { component: C02Component, routes: noRoutes },
+  'Chapter 2: exercise (completed)': { component: C02ecComponent, routes: noRoutes },
+  'Chapter 4': { component: C04Component, routes: c08Routes },
   'Chapter 8': { component: C08Component, routes: c08Routes },
   'Chapter 9': { component: C09Component, routes: c09Routes },
 };
@@ -36,7 +40,7 @@ export class ChapterViewDirective {
   selector: 'my-app',
   template: `
     <label>Chapter to run:
-      <select (change)="onChapterChange($event.target.value)">
+      <select [value]="currentChapter" (change)="onChapterChange($event.target.value)">
         <option *ngFor="let chapter of chapters">{{chapter}}</option>
       </select>
     </label>
@@ -45,6 +49,7 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
+  currentChapter = 'Chapter 2: exercise (completed)';
   chapters = Object.keys(chapters);
 
   constructor(
@@ -52,14 +57,18 @@ export class AppComponent {
     private location: Location,
     private router: Router,
     private viewContainerRef: ViewContainerRef) {
-      this.setView(chapters[this.chapters[0]].component); // Set initial view
+      // Set initial view
+      const resetRouterConfig = this.currentChapter !== 'Final';
+      this.onChapterChange(this.currentChapter, resetRouterConfig);
     }
 
-  onChapterChange(chapter: string) {
+  onChapterChange(chapter: string, resetRouterConfig = true) {
     const {component, routes} = chapters[chapter];
     this.setView(component);
-    this.router.resetConfig(routes);
-    this.location.go('/');
+    if (resetRouterConfig) {
+      this.router.resetConfig(routes);
+      this.location.go('/');
+    }
   }
 
   setView(component?: { new(): any }): void {
