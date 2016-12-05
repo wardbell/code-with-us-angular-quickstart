@@ -3,11 +3,7 @@
 
   <!--Diagnostic: {{ customer | json }}-->
 
-  <h2>
-    <button (click)="left()"><</button>
-    {{customer.name}}
-    <button (click)="right()">></button>
-  </h2>
+  <h2>{{customer.name}}</h2>
   <p><i>{{customer.name}} is at {{customer.street}} in {{customer.city}} in the {{customer.region}} region.</i></p>
 
   <fieldset>
@@ -23,7 +19,7 @@
   <div *ngIf="!hideAddress">
     <h3>Address:</h3>
     <fieldset>
-    <label>
+      <label>
         Street:
         <input [(ngModel)]="customer.street" placeholder="Street">
       </label>

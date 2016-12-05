@@ -14,14 +14,16 @@ import { AppComponent as C03ecComponent } from './chapter-03-exercise-completed/
 import { AppComponent as C04Component }   from './chapter-04/app.component';
 import { AppComponent as C05Component }   from './chapter-05/app.component';
 import { AppComponent as C06Component }   from './chapter-06/app.component';
-import { AppComponent as C07Component }   from './chapter-07/app.component';
 import { AppComponent as C06ecComponent } from './chapter-06-exercise-completed/app.component';
+import { AppComponent as C07Component }   from './chapter-07/app.component';
+import { AppComponent as C07ecComponent } from './chapter-07-exercise-completed/app.component';
 import { AppComponent as C08Component }   from './chapter-08/app.component';
-import { AppComponent as C09Component }   from './chapter-09/app.component';
+import { AppComponent as C98Component }   from './chapter-98/app.component';
+import { AppComponent as C99Component }   from './chapter-99/app.component';
 
 import { routes as finalRoutes } from './final/app-routing.module';
-import { routes as c08Routes }   from './chapter-08/app.module';
-import { routes as c09Routes }   from './chapter-09/app.module';
+import { routes as c98Routes }   from './chapter-98/app.module';
+import { routes as c99Routes }   from './chapter-99/app.module';
 
 const noRoutes: Routes = [];
 
@@ -40,9 +42,11 @@ const chapters: { [index: string]: { component: any, routes: Routes } } = {
   'Chapter 6': { component: C06Component, routes: noRoutes },
   'Chapter 6: exercise (completed)': { component: C06ecComponent, routes: noRoutes },
   'Chapter 7': { component: C07Component, routes: noRoutes },
+  'Chapter 7: exercise (completed)': { component: C07ecComponent, routes: noRoutes },
+  'Chapter 8': { component: C08Component, routes: noRoutes },
 
-  'Chapter 8': { component: C08Component, routes: c08Routes },
-  'Chapter 9': { component: C09Component, routes: c09Routes },
+  'Chapter 98': { component: C98Component, routes: c98Routes },
+  'Chapter 99': { component: C99Component, routes: c99Routes },
 };
 
 @Directive( {selector: '[chapterView]'})
@@ -63,7 +67,7 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
-  currentChapter = 'Chapter 7';
+  currentChapter = 'Chapter 8';
   chapters = Object.keys(chapters);
 
   constructor(

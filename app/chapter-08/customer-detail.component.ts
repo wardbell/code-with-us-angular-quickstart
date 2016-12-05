@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Customer } from './model';
 
@@ -12,9 +12,11 @@ export class CustomerDetailComponent {
   @Input()
   customer: Customer;
 
+  @Output()
+  shift = new EventEmitter<number>();
+
   hideAddress = false;
 
-  countries = ['Canada', 'Mexico', 'USA'];
-  regions   = ['East', 'Midwest', 'North', 'South', 'West'];
-  states    = ['California', 'Illinois', 'Jalisco', 'Quebec'];
+  left()  { this.shift.emit(-1); }
+  right() { this.shift.emit(1); }
 }

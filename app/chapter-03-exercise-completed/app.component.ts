@@ -23,7 +23,7 @@ import { Component } from '@angular/core';
   <div [hidden]="hideAddress">
     <h3>Address:</h3>
     <fieldset>
-    <label>
+      <label>
         Street:
         <input [(ngModel)]="street" placeholder="Street">
       </label>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Customer } from './customer';
+import { Customer } from './model';
 
 @Component({
   moduleId: module.id,
@@ -47,15 +47,4 @@ export class CustomerListComponent  {
       region:  'Midwest'
     },
   ];
-
-  shift(increment: number) {
-    // shift the index of the current customer by the increment
-    let ix = increment + this.customers.findIndex(c => c === this.customer);
-
-    // prevent index overflow
-    ix = Math.min(this.customers.length - 1, Math.max(0, ix));
-
-    // set next customer
-    this.customer = this.customers[ix];
-  }
 }

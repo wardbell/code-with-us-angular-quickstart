@@ -1,0 +1,22 @@
+<!-- Guard against missing customer (defensive programming) -->
+<div *ngIf="customer">
+
+  <!--Diagnostic: {{ customer | json }}-->
+
+  <h2>{{customer.name}}</h2>
+
+  <fieldset>
+    <label>
+      Name:
+      <input [(ngModel)]="customer.name" placeholder="Customer name">
+    </label>
+  </fieldset>
+
+  <br>
+  <label><input type="checkbox" [(ngModel)]="hideAddress"/>Hide address</label>
+
+  <div *ngIf="!hideAddress">
+    <h3>Address:</h3>
+    <address-comp [address]="customer.address"></address-comp>
+  </div>
+</div>

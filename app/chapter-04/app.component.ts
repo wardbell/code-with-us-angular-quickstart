@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Customer } from './customer';
+import { Customer } from './model';
 
 // [] means property binding - Component to DOM
 // () means event binding - DOM to Component
@@ -25,7 +25,7 @@ import { Customer } from './customer';
   <div [hidden]="hideAddress">
     <h3>Address:</h3>
     <fieldset>
-    <label>
+      <label>
         Street:
         <input [(ngModel)]="customer.street" placeholder="Street">
       </label>

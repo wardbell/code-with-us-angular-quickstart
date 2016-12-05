@@ -13,8 +13,4 @@ export class CustomerDetailComponent {
   customer: Customer;
 
   hideAddress = false;
-
-  countries = ['Canada', 'Mexico', 'USA'];
-  regions   = ['East', 'Midwest', 'North', 'South', 'West'];
-  states    = ['California', 'Illinois', 'Jalisco', 'Quebec'];
 }
