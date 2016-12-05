@@ -1,0 +1,71 @@
+<h1>Customers</h1>
+<p><i>Click to select a customer</i></p>
+
+<ul>
+  <li *ngFor="let cust of customers"
+      (click)="customer = cust"
+      [ngClass]="{selected: cust === customer}">
+    {{cust.name}}
+  </li>
+</ul>
+
+<hr>
+
+<div *ngIf="customer">
+  <h2>{{customer.name}}</h2>
+  <p><i>{{customer.name}} is at {{customer.street}} in {{customer.city}} in the {{customer.region}} region.</i></p>
+
+  <fieldset>
+    <label>
+      Name:
+      <input [(ngModel)]="customer.name" placeholder="Customer name">
+    </label>
+  </fieldset>
+
+  <br>
+  <label><input type="checkbox" [(ngModel)]="hideAddress"/>Hide address</label>
+
+  <!-- use *ngIf to hide/show the address -->
+  <!--<div [hidden]="hideAddress">-->
+  <div *ngIf="!hideAddress">
+    <h3>Address:</h3>
+    <fieldset>
+    <label>
+        Street:
+        <input [(ngModel)]="customer.street" placeholder="Street">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        City:
+        <input [(ngModel)]="customer.city" placeholder="City">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        State:
+        <select [(ngModel)]="customer.state">
+          <!-- use *ngFor to list the states as options -->
+          <option *ngFor="let state of states">{{state}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Country:
+        <select [(ngModel)]="customer.country">
+          <!-- use *ngFor to list the countries as options -->
+          <option *ngFor="let country of countries">{{country}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Region:
+        <select [(ngModel)]="customer.region">
+          <option *ngFor="let region of regions">{{region}}</option>
+        </select>
+      </label>
+    </fieldset>
+  </div>
+</div>

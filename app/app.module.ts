@@ -10,6 +10,9 @@ import { AppModule as C03Module }   from './chapter-03/app.module';
 import { AppModule as C03ecModule } from './chapter-03-exercise-completed/app.module';
 import { AppModule as C04Module }   from './chapter-04/app.module';
 import { AppModule as C05Module }   from './chapter-05/app.module';
+import { AppModule as C06Module }   from './chapter-06/app.module';
+import { AppModule as C07Module }   from './chapter-07/app.module';
+import { AppModule as C06ecModule } from './chapter-06-exercise-completed/app.module';
 import { AppModule as C08Module }   from './chapter-08/app.module';
 import { AppModule as C09Module }   from './chapter-09/app.module';
 
@@ -25,6 +28,8 @@ import { AppComponent, ChapterViewDirective } from './app.component';
     C03Module, C03ecModule,
     C04Module,
     C05Module,
+    C06Module, C06ecModule,
+    C07Module,
     C08Module,
     C09Module,
  ],

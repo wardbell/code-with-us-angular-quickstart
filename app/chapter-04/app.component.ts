@@ -41,7 +41,7 @@ import { Customer } from './customer';
         State:
         <select [(ngModel)]="customer.state">
           <option>California</option>
-          <option>Oaxaca</option>
+          <option>Jalisco</option>
           <option>Quebec</option>
         </select>
       </label>

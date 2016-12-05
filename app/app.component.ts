@@ -13,6 +13,9 @@ import { AppComponent as C03Component }   from './chapter-03/app.component';
 import { AppComponent as C03ecComponent } from './chapter-03-exercise-completed/app.component';
 import { AppComponent as C04Component }   from './chapter-04/app.component';
 import { AppComponent as C05Component }   from './chapter-05/app.component';
+import { AppComponent as C06Component }   from './chapter-06/app.component';
+import { AppComponent as C07Component }   from './chapter-07/app.component';
+import { AppComponent as C06ecComponent } from './chapter-06-exercise-completed/app.component';
 import { AppComponent as C08Component }   from './chapter-08/app.component';
 import { AppComponent as C09Component }   from './chapter-09/app.component';
 
@@ -34,6 +37,9 @@ const chapters: { [index: string]: { component: any, routes: Routes } } = {
   'Chapter 3: exercise (completed)': { component: C03ecComponent, routes: noRoutes },
   'Chapter 4': { component: C04Component, routes: noRoutes },
   'Chapter 5': { component: C05Component, routes: noRoutes },
+  'Chapter 6': { component: C06Component, routes: noRoutes },
+  'Chapter 6: exercise (completed)': { component: C06ecComponent, routes: noRoutes },
+  'Chapter 7': { component: C07Component, routes: noRoutes },
 
   'Chapter 8': { component: C08Component, routes: c08Routes },
   'Chapter 9': { component: C09Component, routes: c09Routes },
@@ -57,7 +63,7 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
-  currentChapter = 'Chapter 5';
+  currentChapter = 'Chapter 7';
   chapters = Object.keys(chapters);
 
   constructor(

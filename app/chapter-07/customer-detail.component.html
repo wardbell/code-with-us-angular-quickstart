@@ -1,0 +1,63 @@
+<!-- Guard against missing customer (defensive programming) -->
+<div *ngIf="customer">
+
+  <!--Diagnostic: {{ customer | json }}-->
+
+  <h2>
+    <button (click)="left()"><</button>
+    {{customer.name}}
+    <button (click)="right()">></button>
+  </h2>
+  <p><i>{{customer.name}} is at {{customer.street}} in {{customer.city}} in the {{customer.region}} region.</i></p>
+
+  <fieldset>
+    <label>
+      Name:
+      <input [(ngModel)]="customer.name" placeholder="Customer name">
+    </label>
+  </fieldset>
+
+  <br>
+  <label><input type="checkbox" [(ngModel)]="hideAddress"/>Hide address</label>
+
+  <div *ngIf="!hideAddress">
+    <h3>Address:</h3>
+    <fieldset>
+    <label>
+        Street:
+        <input [(ngModel)]="customer.street" placeholder="Street">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        City:
+        <input [(ngModel)]="customer.city" placeholder="City">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        State:
+        <select [(ngModel)]="customer.state">
+          <option *ngFor="let state of states">{{state}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Country:
+        <select [(ngModel)]="customer.country">
+          <option *ngFor="let country of countries">{{country}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Region:
+        <select [(ngModel)]="customer.region">
+          <option *ngFor="let region of regions">{{region}}</option>
+        </select>
+      </label>
+    </fieldset>
+  </div>
+
+</div>
