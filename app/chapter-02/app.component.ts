@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
   template: `
   <h1>{{name}}</h1>
 
-  <div>
+  <fieldset>
     <!-- <img src="{{image}}"/> -->
     <img [src]="image"/>
-  </div>
+  </fieldset>
 
-  <div>
+  <fieldset>
     <button (click)="clicked()">Toggle color</button>
     <label [style.color]="color">
       Favorite color:
@@ -27,7 +27,7 @@ import { Component } from '@angular/core';
       </select>
 
     </label>
-  </div>
+  </fieldset>
   `,
 })
 

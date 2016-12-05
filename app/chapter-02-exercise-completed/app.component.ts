@@ -8,15 +8,20 @@ import { Component } from '@angular/core';
   template: `
   <h1>{{name}}</h1>
 
-  <p>{{name}} is in the {{region}} region</p>
+  <p><i>{{name}} is in the {{region}} region.</i></p>
 
-  <h3>Address:</h3>
+  <br>
   <button (click)="addressClick()">Show/Hide address</button>
 
   <div [hidden]="hideAddress">
-    <div><label>Street: </label>{{street}}</div>
-    <div><label>City: </label>{{city}}</div>
-    <div>
+    <h3>Address:</h3>
+    <fieldset>
+      <label>Street: </label>{{street}}
+    </fieldset>
+    <fieldset>
+      <label>City: </label>{{city}}
+    </fieldset>
+    <fieldset>
       <label>
         Region:
         <select (change)="regionChange($event.target.value)">
@@ -26,14 +31,14 @@ import { Component } from '@angular/core';
           <option>West</option>
         </select>
       </label>
-    </div>
+    </fieldset>
   </div>
 
-  <div>
+  <fieldset>
     <img [src]="image"/>
-  </div>
+  </fieldset>
 
-  <div>
+  <fieldset>
     <button (click)="clicked()">Toggle color</button>
     <label [style.color]="color">
       Favorite color:
@@ -43,7 +48,7 @@ import { Component } from '@angular/core';
         <option>green</option>
       </select>
     </label>
-  </div>
+  </fieldset>
 
   `,
 })
