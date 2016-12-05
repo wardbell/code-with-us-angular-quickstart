@@ -17,7 +17,6 @@ import { Component } from '@angular/core';
     </label>
   </fieldset>
 
-
   <br>
   <label><input type="checkbox" [(ngModel)]="hideAddress"/>Hide address</label>
 

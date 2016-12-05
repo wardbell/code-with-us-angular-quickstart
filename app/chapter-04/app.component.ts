@@ -1,51 +1,86 @@
 import { Component } from '@angular/core';
 
+import { Customer } from './customer';
+
 // [] means property binding - Component to DOM
 // () means event binding - DOM to Component
 
 @Component({
   selector: 'my-app',
   template: `
-  <h1>{{name}}</h1>
+  <h1>{{customer.name}}</h1>
 
-  <!-- <img src="{{image}}"/> -->
-  <img [src]="image"/>
+  <p><i>{{customer.name}} is at {{customer.street}} in {{customer.city}} in the {{customer.region}} region.</i></p>
 
-  <div>
-    <button (click)="clicked()">Toggle color</button>
-    <label [style.color]="color">
-      Favorite color
-
-    <!-- <select #selector (change)="colorChange(selector.value)"> -->
-
-    <select (change)="colorChange($event.target.value)">
-      <option>red</option>
-      <option>blue</option>
-      <option>green</option>
-    </select>
-
+  <fieldset>
+    <label>
+      Name:
+      <input [(ngModel)]="customer.name" placeholder="Customer name">
     </label>
-  </div>
+  </fieldset>
 
-  <div>
-    <label>Name:
-      <input [value]="name" placeholder="Customer name">
-    </label>
+  <br>
+  <label><input type="checkbox" [(ngModel)]="hideAddress"/>Hide address</label>
+
+  <div [hidden]="hideAddress">
+    <h3>Address:</h3>
+    <fieldset>
+    <label>
+        Street:
+        <input [(ngModel)]="customer.street" placeholder="Street">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        City:
+        <input [(ngModel)]="customer.city" placeholder="City">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        State:
+        <select [(ngModel)]="customer.state">
+          <option>California</option>
+          <option>Oaxaca</option>
+          <option>Quebec</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Country:
+        <select [(ngModel)]="customer.country">
+          <option>Canada</option>
+          <option>Mexico</option>
+          <option>USA</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Region:
+        <select [(ngModel)]="customer.region">
+          <option>East</option>
+          <option>North</option>
+          <option>South</option>
+          <option>West</option>
+        </select>
+      </label>
+    </fieldset>
   </div>
   `,
 })
 
 export class AppComponent  {
-  name = 'Alex Smith';
-  image = 'favicon.ico';
-  color = 'red';
 
-  clicked() {
-    this.color = this.color === 'red' ? 'blue' : 'red';
-  }
+  customer: Customer = {
+    name:    'Alex Smith',
+    street:  '123 Main Street',
+    city:    'Anytown',
+    state:   'California',
+    country: 'USA',
+    region:  'West'
+  };
 
-  colorChange(color: string) {
-    this.color = color;
-  }
-
+  hideAddress = false;
 }
