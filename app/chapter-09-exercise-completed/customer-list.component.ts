@@ -1,9 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import { Component, OnInit } from '@angular/core';
 
 import { Customer } from './model';
 
-import { DataServiceP }  from './data-p.service';
 import { DataService }   from './data.service';
 import { LoggerService } from './logger.service';
 
@@ -26,8 +24,7 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit() {
     this.logger.log('Getting customers ...');
-    // this.dataService.getCustomers().then(custs => this.customers = custs);
-    this.dataService.getCustomers().subscribe(custs => this.customers = custs);
+    this.customers = this.dataService.getCustomers();
   }
 
   shift(increment: number) {
