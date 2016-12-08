@@ -74,6 +74,7 @@ import { Customer } from './model';
 export class AppComponent  {
 
   customer: Customer = {
+    id:      1,
     name:    'Alex Smith',
     street:  '123 Main Street',
     city:    'Anytown',

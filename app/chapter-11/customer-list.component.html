@@ -1,0 +1,23 @@
+<h1>Customers</h1>
+<p *ngIf="isBusy"><i>Loading customers ...</i></p>
+<p *ngIf="!isBusy">
+  <i>Click to select a customer</i> &nbsp;
+  <button (click)="getCustomers()">Refresh</button> &nbsp;
+  <button (click)="save(customer)" [hidden]="!customer">Save</button> &nbsp;
+</p>
+
+<ul>
+  <li *ngFor="let cust of customers"
+      (click)="customer = cust"
+      [ngClass]="{selected: cust === customer}">
+    {{cust.name}}
+  </li>
+</ul>
+
+<div *ngIf="customer">
+  <hr>
+  <customer-detail [customer]="customer"
+                   (shift)="shift($event)"
+                   (save)="save($event)">
+  </customer-detail>
+</div>

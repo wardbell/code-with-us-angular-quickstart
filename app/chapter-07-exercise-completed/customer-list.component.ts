@@ -15,6 +15,7 @@ export class CustomerListComponent  {
 
   customers: Customer[] = [
     {
+      id:       1,
       name:    'Alex Smith',
       address: {
         street:  '123 Main Street',
@@ -25,6 +26,7 @@ export class CustomerListComponent  {
       }
     },
     {
+      id:       2,
       name:    'Pierre Pasmal',
       address: {
         street:  '456 Rue de Main',
@@ -35,6 +37,7 @@ export class CustomerListComponent  {
       }
     },
     {
+      id:       3,
       name:    'Margarita Nadie',
       address: {
         street:  '789 Calle Principal',
@@ -45,6 +48,7 @@ export class CustomerListComponent  {
       }
     },
     {
+      id:       4,
       name:    'Katie O\'Leary',
       address: {
         street:  '137 DeKoven Street',

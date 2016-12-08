@@ -1,5 +1,7 @@
-export const customers = [
+export function createTestCustomers() {
+  return [
     {
+      id:       1,
       name:    'Alex Smith',
       address: {
         street:  '123 Main Street',
@@ -10,6 +12,7 @@ export const customers = [
       }
     },
     {
+      id:       2,
       name:    'Pierre Pasmal',
       address: {
         street:  '456 Rue de Main',
@@ -20,6 +23,7 @@ export const customers = [
       }
     },
     {
+      id:       3,
       name:    'Margarita Nadie',
       address: {
         street:  '789 Calle Principal',
@@ -30,6 +34,7 @@ export const customers = [
       }
     },
     {
+      id:       4,
       name:    'Katie O\'Leary',
       address: {
         street:  '137 DeKoven Street',
@@ -40,3 +45,4 @@ export const customers = [
       }
     },
   ];
+}

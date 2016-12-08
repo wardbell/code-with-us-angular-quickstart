@@ -2,14 +2,14 @@
 import { Injectable } from '@angular/core';
 
 import { Customer }  from './model';
-import { customers } from '../test-data';
+import { createTestCustomers } from '../test-data';
 
 import { LoggerService } from './logger.service';
 
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class DataService {
@@ -17,9 +17,9 @@ export class DataService {
   constructor(private logger: LoggerService) { }
 
   getCustomers(): Observable<Customer[]> {
-    // simulate server response latency
+    const customers = createTestCustomers();
     return of(customers)
-      .delay(1500)
-      .do(() => this.logger.log(`Got ${customers.length} customers as an observable`));
+      .delay(1500) // simulate server response latency
+      .do(custs => this.logger.log(`Got ${custs.length} customers as an observable`));
   }
 }
