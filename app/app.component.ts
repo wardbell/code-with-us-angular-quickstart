@@ -18,6 +18,8 @@ import { AppComponent as C06ecComponent } from './chapter-06-exercise-completed/
 import { AppComponent as C07Component }   from './chapter-07/app.component';
 import { AppComponent as C07ecComponent } from './chapter-07-exercise-completed/app.component';
 import { AppComponent as C08Component }   from './chapter-08/app.component';
+import { AppComponent as C09Component }   from './chapter-09/app.component';
+import { AppComponent as C10Component }   from './chapter-10/app.component';
 import { AppComponent as C98Component }   from './chapter-98/app.component';
 import { AppComponent as C99Component }   from './chapter-99/app.component';
 
@@ -30,20 +32,22 @@ const noRoutes: Routes = [];
 // chapters: chapter components, some of which which have routes
 const chapters: { [index: string]: { component: any, routes: Routes } } = {
 
-  'Final':    { component: FinalComponent, routes: finalRoutes },
+  'Final':      { component: FinalComponent, routes: finalRoutes },
 
-  'Chapter 1': { component: C01Component, routes: noRoutes },
-  'Chapter 2': { component: C02Component, routes: noRoutes },
+  'Chapter 1':  { component: C01Component, routes: noRoutes },
+  'Chapter 2':  { component: C02Component, routes: noRoutes },
   'Chapter 2: exercise (completed)': { component: C02ecComponent, routes: noRoutes },
-  'Chapter 3': { component: C03Component, routes: noRoutes },
+  'Chapter 3':  { component: C03Component, routes: noRoutes },
   'Chapter 3: exercise (completed)': { component: C03ecComponent, routes: noRoutes },
-  'Chapter 4': { component: C04Component, routes: noRoutes },
-  'Chapter 5': { component: C05Component, routes: noRoutes },
-  'Chapter 6': { component: C06Component, routes: noRoutes },
+  'Chapter 4':  { component: C04Component, routes: noRoutes },
+  'Chapter 5':  { component: C05Component, routes: noRoutes },
+  'Chapter 6':  { component: C06Component, routes: noRoutes },
   'Chapter 6: exercise (completed)': { component: C06ecComponent, routes: noRoutes },
-  'Chapter 7': { component: C07Component, routes: noRoutes },
+  'Chapter 7':  { component: C07Component, routes: noRoutes },
   'Chapter 7: exercise (completed)': { component: C07ecComponent, routes: noRoutes },
-  'Chapter 8': { component: C08Component, routes: noRoutes },
+  'Chapter 8':  { component: C08Component, routes: noRoutes },
+  'Chapter 9':  { component: C09Component, routes: noRoutes },
+  'Chapter 10': { component: C10Component, routes: noRoutes },
 
   'Chapter 98': { component: C98Component, routes: c98Routes },
   'Chapter 99': { component: C99Component, routes: c99Routes },
@@ -67,7 +71,7 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
-  currentChapter = 'Chapter 8';
+  currentChapter = 'Chapter 10';
   chapters = Object.keys(chapters);
 
   constructor(

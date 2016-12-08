@@ -1,0 +1,40 @@
+<div *ngIf="address">
+    <!-- Diagnostic {{ address | json }}-->
+    <fieldset>
+      <label>
+        Street:
+        <input [(ngModel)]="address.street" placeholder="Street">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        City:
+        <input [(ngModel)]="address.city" placeholder="City">
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        State:
+        <select [(ngModel)]="address.state">
+          <option *ngFor="let state of states">{{state}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Country:
+        <select [(ngModel)]="address.country">
+          <option *ngFor="let country of countries">{{country}}</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label>
+        Region:
+        <select [(ngModel)]="address.region">
+          <option *ngFor="let region of regions">{{region}}</option>
+        </select>
+      </label>
+    </fieldset>
+
+</div>
