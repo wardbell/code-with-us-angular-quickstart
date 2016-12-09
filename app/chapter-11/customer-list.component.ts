@@ -24,13 +24,14 @@ export class CustomerListComponent implements OnInit {
   ngOnInit() { this.getCustomers(); }
 
   getCustomers() {
-    this.customer = undefined;
+    this.customer = undefined;  // <-- clear before refresh
     this.customers = undefined;
 
     this.isBusy = true;
     this.logger.log('Getting customers ...');
-    this.dataService.getCustomers()
-      .subscribe(
+
+    // this.dataService.getCustomersP().then(  // Promise version
+    this.dataService.getCustomers().subscribe( // Observable version
         custs => {
           this.isBusy = false;
           this.customers = custs;

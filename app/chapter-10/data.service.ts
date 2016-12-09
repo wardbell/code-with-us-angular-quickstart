@@ -16,10 +16,28 @@ export class DataService {
 
   constructor(private logger: LoggerService) { }
 
-  getCustomers(): Observable<Customer[]> {
+  /** Get existing customers as a Promise */
+  getCustomersP(): Promise<Customer[]> {
+    this.logger.log('Getting customers as a Promise ...');
+
     const customers = createTestCustomers();
+
+    return new Promise(resolve => {
+      setTimeout(() => {
+        this.logger.log(`Got ${customers.length} customers`);
+        resolve(customers);
+      }, 1500); // simulate server response latency
+    });
+  }
+
+  /** Get existing customers as an Observable */
+  getCustomers(): Observable<Customer[]> {
+    this.logger.log('Getting customers as an Observable ...');
+
+    const customers = createTestCustomers();
+
     return of(customers)
       .delay(1500) // simulate server response latency
-      .do(custs => this.logger.log(`Got ${custs.length} customers as an observable`));
+      .do(custs => this.logger.log(`Got ${custs.length} customers`));
   }
 }

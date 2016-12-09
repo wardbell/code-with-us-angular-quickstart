@@ -8,7 +8,6 @@ import { CustomerDetailComponent } from './customer-detail.component';
 import { CustomerListComponent }   from './customer-list.component';
 
 import { DataService }   from './data.service';
-import { DataServiceP }  from './data-p.service';
 import { LoggerService } from './logger.service';
 
 @NgModule({
@@ -24,7 +23,6 @@ import { LoggerService } from './logger.service';
   ],
   providers: [
     DataService,
-    DataServiceP, // <-- promise version
     LoggerService
   ],
   bootstrap: [ AppComponent ]

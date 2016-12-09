@@ -1,10 +1,8 @@
-/* tslint:disable:no-unused-variable */
 import { Component, OnInit } from '@angular/core';
 
 import { Customer } from './model';
 
-import { DataServiceP }  from './data-p.service';  // promise version
-import { DataService }   from './data.service';    // observable version
+import { DataService }   from './data.service';
 import { LoggerService } from './logger.service';
 
 @Component({
@@ -19,17 +17,19 @@ export class CustomerListComponent implements OnInit {
   customers: Customer[];
   isBusy = false;
 
-  // inject the DataService/DataServiceP and LoggerService
   constructor(
     private dataService: DataService,
     private logger: LoggerService) { }
 
-  ngOnInit() {
+  ngOnInit() { this.getCustomers(); }
+
+  getCustomers() {
     this.isBusy = true;
     this.logger.log('Getting customers ...');
-    this.dataService.getCustomers()
-      // .then(custs => {   // promise version
-      .subscribe(custs => { // observable version
+
+    // this.dataService.getCustomersP().then(  // promise version
+    this.dataService.getCustomers().subscribe( // observable version
+      custs => {
         this.isBusy = false;
         this.customers = custs;
       });
