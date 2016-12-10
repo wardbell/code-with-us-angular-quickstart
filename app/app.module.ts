@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-// import './rxjs-extensions';
-
 import { AppModule as C01Module } from './chapter-01/app.module';
 import { AppModule as C02Module } from './chapter-02/app.module';
 import { AppModule as C02ecModule } from './chapter-02-exercise-completed/app.module';
@@ -50,6 +48,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 
     RouterModule.forRoot([]), // <-- for future routing features
 
+    // By making this hte last thing that we import,
+    // it always overrides whatever in memory data we previously had loaded
     InMemoryWebApiModule.forRoot(InMemoryDataService) // <-- register in-mem-web-api and its data
   ],
 
