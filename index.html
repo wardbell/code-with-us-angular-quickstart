@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <base href="/">
-    <title>Code with Us</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="app-styles.css">
+
+<head>
+  <base href="/">
+  <title>Code with Us</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="app-styles.css">
+
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+  <link rel="stylesheet" href="angular-material.min.css" />
 
     <!-- Polyfill(s) for older browsers -->
-    <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/core-js/client/shim.min.js"></script>
 
-    <script src="node_modules/zone.js/dist/zone.js"></script>
-    <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/reflect-metadata/Reflect.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
 
-    <script src="systemjs.config.js"></script>
-    <script>
+  <script src="systemjs.config.js"></script>
+  <script>
       // For harness: 'app'
       // For stand-alone example, pick one like this: 'app/chapter-01/main'
-      System.import('app').catch(function(err){ console.error(err); });
+      System.import('app').catch(function (err) { console.error(err); });
     </script>
-  </head>
+</head>
 
-  <body>
-    <my-app>Loading AppComponent content here ...</my-app>
-  </body>
+<body>
+  <md-toolbar class="dark">
+    <div class="md-toolbar-tools">
+      <a class="md-title-icon" ng-href="http://pluralsight.com" target="_blank"><i></i></a>
+      <h3>
+        <span>Angular 2: Code With John and Ward</span>
+      </h3>
+      <span flex=""></span>
+      <!--<div class="md-title-links hide-xs">
+        <md-button class="md-accent md-hue-1 md-title-button" href="http://github.com/johnpapa/angular2-first-look" target="_blank">Github</md-button>
+        <md-button class="md-accent md-hue-1 md-title-button" href="http://angular.io" target="_blank">Angular 2</md-button>
+        <md-button class="md-accent md-hue-1 md-title-button" href="http://johnpapa.net" target="_blank">John Papa</md-button>
+      </div>-->
+    </div>
+  </md-toolbar>
+  <my-app>Loading AppComponent content here ...</my-app>
+</body>
+
 </html>
