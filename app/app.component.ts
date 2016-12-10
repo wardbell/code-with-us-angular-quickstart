@@ -22,6 +22,7 @@ import { AppComponent as C09Component }   from './chapter-09/app.component';
 import { AppComponent as C09ecComponent } from './chapter-09-exercise-completed/app.component';
 import { AppComponent as C10Component }   from './chapter-10/app.component';
 import { AppComponent as C11Component }   from './chapter-11/app.component';
+import { AppComponent as C12Component }   from './chapter-12/app.component';
 import { AppComponent as C98Component }   from './chapter-98/app.component';
 import { AppComponent as C99Component }   from './chapter-99/app.component';
 
@@ -52,6 +53,7 @@ const chapters: { [index: string]: { component: any, routes: Routes } } = {
   'Chapter 9: exercise (completed)': { component: C09ecComponent, routes: noRoutes },
   'Chapter 10': { component: C10Component, routes: noRoutes },
   'Chapter 11': { component: C11Component, routes: noRoutes },
+  'Chapter 12': { component: C12Component, routes: noRoutes },
 
   'Chapter 98': { component: C98Component, routes: c98Routes },
   'Chapter 99': { component: C99Component, routes: c99Routes },

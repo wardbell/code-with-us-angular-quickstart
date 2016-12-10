@@ -17,6 +17,6 @@ export class CustomerDetailComponent {
 
   hideAddress = false;
 
-  left()  { this.shift.emit(-1); }
-  right() { this.shift.emit(1); }
+  left()   { this.shift.emit(-1); }
+  right()  { this.shift.emit(1); }
 }

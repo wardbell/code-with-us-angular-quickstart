@@ -24,34 +24,15 @@ export class CustomerListComponent implements OnInit {
   ngOnInit() { this.getCustomers(); }
 
   getCustomers() {
-    this.customer = undefined;  // <-- clear before refresh
-    this.customers = undefined;
-
     this.isBusy = true;
     this.logger.log('Getting customers ...');
 
-    // this.dataService.getCustomersP().then(  // Promise version
-    this.dataService.getCustomers().subscribe( // Observable version
-        custs => {
-          this.isBusy = false;
-          this.customers = custs;
-        },
-        (errorMsg: string) => {
-          this.isBusy = false;
-          alert(errorMsg);
-        }
-      );
-  }
-
-  save(customer: Customer) {
-    if (!customer) { return; }
-    this.isBusy = true;
-    this.logger.log('Saving ...');
-    this.dataService.update(customer)
-      .subscribe(
-        () => this.isBusy = false,
-        () => this.isBusy = false
-      );
+    // this.dataService.getCustomersP().then(  // promise version
+    this.dataService.getCustomers().subscribe( // observable version
+      custs => {
+        this.isBusy = false;
+        this.customers = custs;
+      });
   }
 
   shift(increment: number) {

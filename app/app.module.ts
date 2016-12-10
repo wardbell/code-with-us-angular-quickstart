@@ -21,7 +21,10 @@ import { AppModule as C09Module }   from './chapter-09/app.module';
 import { AppModule as C09ecModule } from './chapter-09-exercise-completed/app.module';
 import { AppModule as C10Module }   from './chapter-10/app.module';
 import { AppModule as C11Module }   from './chapter-11/app.module';
-import { AppModule as C98Module }   from './chapter-98/app.module';
+import { AppModule as C12Module }   from './chapter-12/app.module';
+
+
+import { AppModule as C98Module } from './chapter-98/app.module';
 import { AppModule as C99Module }   from './chapter-99/app.module';
 
 import { AppComponent, ChapterViewDirective } from './app.component';
@@ -46,6 +49,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
     C09Module, C09ecModule,
     C10Module,
     C11Module,
+    C12Module,
     C98Module,
     C99Module,
 
