@@ -10,7 +10,10 @@ import { Customer } from './model';
   template: `
   <h1>{{customer.name}}</h1>
 
-  <p><i>{{customer.name}} is at {{customer.address.street}} in {{customer.address.city}} in the {{customer.address.region}} region.</i></p>
+  <p><i>
+    {{customer.name}} is at {{customer.address.street}} in {{customer.address.city}}
+    in {{customer.address.state}} in the {{customer.address.region}} region.
+  </i></p>
 
   <fieldset>
     <label>
