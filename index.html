@@ -11,7 +11,7 @@
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
   <link rel="stylesheet" href="angular-material.min.css" />
 
-    <!-- Polyfill(s) for older browsers -->
+  <!-- Polyfill(s) for older browsers -->
   <script src="node_modules/core-js/client/shim.min.js"></script>
 
   <script src="node_modules/zone.js/dist/zone.js"></script>
@@ -20,10 +20,11 @@
 
   <script src="systemjs.config.js"></script>
   <script>
-      // For harness: 'app'
-      // For stand-alone example, pick one like this: 'app/chapter-01/main'
-      System.import('app').catch(function (err) { console.error(err); });
-    </script>
+    // For harness: 'app'
+    // For stand-alone example, pick one like this: 'app/chapter-01/main'
+    // e.g. System.import('app/chapter-12/main').catch(function (err) { console.error(err); });
+    System.import('app').catch(function (err) { console.error(err); });
+  </script>
 </head>
 
 <body>
