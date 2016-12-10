@@ -7,7 +7,6 @@ export function createTestCustomers() {
         street:  '123 Main Street',
         city:    'Anytown',
         state:   'California',
-        country: 'USA',
         region:  'West'
       }
     },
@@ -18,7 +17,6 @@ export function createTestCustomers() {
         street:  '456 Rue de Main',
         city:    'Quebec City',
         state:   'Quebec',
-        country: 'Canada',
         region:  'East'
       }
     },
@@ -29,7 +27,6 @@ export function createTestCustomers() {
         street:  '789 Calle Principal',
         city:    'Guadalajara',
         state:   'Jalisco',
-        country: 'Mexico',
         region:  'South'
       }
     },
@@ -40,7 +37,6 @@ export function createTestCustomers() {
         street:  '137 DeKoven Street',
         city:    'Chicago',
         state:   'Illinois',
-        country: 'USA',
         region:  'Midwest'
       }
     },

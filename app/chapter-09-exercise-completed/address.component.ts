@@ -10,7 +10,6 @@ import { Address } from './model';
 export class AddressComponent  {
   @Input() address: Address;
 
-  countries = ['Canada', 'Mexico', 'USA'];
   regions   = ['East', 'Midwest', 'North', 'South', 'West'];
   states    = ['California', 'Illinois', 'Jalisco', 'Quebec'];
 }

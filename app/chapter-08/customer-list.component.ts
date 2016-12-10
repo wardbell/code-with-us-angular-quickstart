@@ -21,7 +21,6 @@ export class CustomerListComponent  {
         street:  '123 Main Street',
         city:    'Anytown',
         state:   'California',
-        country: 'USA',
         region:  'West'
       }
     },
@@ -32,7 +31,6 @@ export class CustomerListComponent  {
         street:  '456 Rue de Main',
         city:    'Quebec City',
         state:   'Quebec',
-        country: 'Canada',
         region:  'East'
       }
     },
@@ -43,7 +41,6 @@ export class CustomerListComponent  {
         street:  '789 Calle Principal',
         city:    'Guadalajara',
         state:   'Jalisco',
-        country: 'Mexico',
         region:  'South'
       }
     },
@@ -54,7 +51,6 @@ export class CustomerListComponent  {
         street:  '137 DeKoven Street',
         city:    'Chicago',
         state:   'Illinois',
-        country: 'USA',
         region:  'Midwest'
       }
     },
