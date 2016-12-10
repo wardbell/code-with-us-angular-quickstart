@@ -47,7 +47,7 @@ const chapters: { [index: string]: { component: any, routes: Routes } } = {
   /*16*/ 'Chapter 11: Async with observables': { component: C11Component, routes: noRoutes },
   /*17*/ 'Chapter 12: Http': { component: C12Component, routes: noRoutes },
   /*18*/ 'Chapter 12: Http exercise (completed)': { component: C12ecComponent, routes: noRoutes },
-  /*19*/ 'Chapter 13: Http update (extra)': { component: C13Component, routes: noRoutes },
+  /*19*/ 'Chapter 13: Http update (bonus)': { component: C13Component, routes: noRoutes },
 };
 
 @Directive( {selector: '[chapterView]'})
