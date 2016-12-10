@@ -67,7 +67,7 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
-  currentChapter = 'Chapter 11';
+  currentChapter = 'Chapter 1';
   chapters = Object.keys(chapters);
 
   constructor(
