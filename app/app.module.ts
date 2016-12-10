@@ -33,6 +33,8 @@ import { InMemoryDataService } from './in-memory-data.service';
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot([]), // <-- for future routing features
+
     C01Module,
     C02Module, C02ecModule,
     C03Module, C03ecModule,
@@ -46,10 +48,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     C11Module,
     C12Module, C12ecModule,
 
-    RouterModule.forRoot([]), // <-- for future routing features
-
-    // By making this hte last thing that we import,
-    // it always overrides whatever in memory data we previously had loaded
+    // By making this the last thing that we import,
+    // it always overrides whatever in memory data a previous module loaded
     InMemoryWebApiModule.forRoot(InMemoryDataService) // <-- register in-mem-web-api and its data
   ],
 
