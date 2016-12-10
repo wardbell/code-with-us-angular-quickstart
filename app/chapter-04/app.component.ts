@@ -10,7 +10,7 @@ import { Customer } from './model';
   template: `
   <h1>{{customer.name}}</h1>
 
-  <p><i>{{customer.name}} is at {{customer.street}} in {{customer.city}} in the {{customer.region}} region.</i></p>
+  <p><i>{{customer.name}} is at {{customer.address.street}} in {{customer.address.city}} in the {{customer.address.region}} region.</i></p>
 
   <fieldset>
     <label>
@@ -27,19 +27,19 @@ import { Customer } from './model';
     <fieldset>
       <label>
         Street:
-        <input [(ngModel)]="customer.street" placeholder="Street">
+        <input [(ngModel)]="customer.address.street" placeholder="Street">
       </label>
     </fieldset>
     <fieldset>
       <label>
         City:
-        <input [(ngModel)]="customer.city" placeholder="City">
+        <input [(ngModel)]="customer.address.city" placeholder="City">
       </label>
     </fieldset>
     <fieldset>
       <label>
         State:
-        <select [(ngModel)]="customer.state">
+        <select [(ngModel)]="customer.address.state">
           <option>California</option>
           <option>Jalisco</option>
           <option>Quebec</option>
@@ -48,18 +48,8 @@ import { Customer } from './model';
     </fieldset>
     <fieldset>
       <label>
-        Country:
-        <select [(ngModel)]="customer.country">
-          <option>Canada</option>
-          <option>Mexico</option>
-          <option>USA</option>
-        </select>
-      </label>
-    </fieldset>
-    <fieldset>
-      <label>
         Region:
-        <select [(ngModel)]="customer.region">
+        <select [(ngModel)]="customer.address.region">
           <option>East</option>
           <option>North</option>
           <option>South</option>
@@ -71,16 +61,16 @@ import { Customer } from './model';
   `,
 })
 
-export class AppComponent  {
-
+export class AppComponent {
   customer: Customer = {
-    id:      1,
-    name:    'Alex Smith',
-    street:  '123 Main Street',
-    city:    'Anytown',
-    state:   'California',
-    country: 'USA',
-    region:  'West'
+    id: 1,
+    name: 'Alex Smith',
+    address: {
+      street: '123 Main Street',
+      city: 'Anytown',
+      state: 'California',
+      region: 'West'
+    }
   };
 
   hideAddress = false;

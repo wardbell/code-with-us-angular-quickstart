@@ -9,16 +9,17 @@ import { Customer } from './model';
   styleUrls: ['app.component.css']
 })
 
-export class AppComponent  {
+export class AppComponent {
 
   customer: Customer = {
-    id:      1,
-    name:    'Alex Smith',
-    street:  '123 Main Street',
-    city:    'Anytown',
-    state:   'California',
-    country: 'USA',
-    region:  'West'
+    id: 1,
+    name: 'Alex Smith',
+    address: {
+      street: '123 Main Street',
+      city: 'Anytown',
+      state: 'California',
+      region: 'West'
+    }
   };
 
   hideAddress = false;
