@@ -22,31 +22,32 @@ import { AppComponent as C09ecComponent } from './chapter-09-exercise-completed/
 import { AppComponent as C10Component }   from './chapter-10/app.component';
 import { AppComponent as C11Component }   from './chapter-11/app.component';
 import { AppComponent as C12Component }   from './chapter-12/app.component';
-import { AppComponent as C12ecComponent }   from './chapter-12-exercise-completed/app.component';
+import { AppComponent as C12ecComponent } from './chapter-12-exercise-completed/app.component';
+import { AppComponent as C13Component }   from './chapter-13/app.component';
 
 const noRoutes: Routes = [];
 
 // chapters: chapter components, some of which which have routes
 const chapters: { [index: string]: { component: any, routes: Routes } } = {
-
-  'Chapter 1':  { component: C01Component, routes: noRoutes },
-  'Chapter 2':  { component: C02Component, routes: noRoutes },
-  'Chapter 2: exercise (completed)': { component: C02ecComponent, routes: noRoutes },
-  'Chapter 3':  { component: C03Component, routes: noRoutes },
-  'Chapter 3: exercise (completed)': { component: C03ecComponent, routes: noRoutes },
-  'Chapter 4':  { component: C04Component, routes: noRoutes },
-  'Chapter 5':  { component: C05Component, routes: noRoutes },
-  'Chapter 6':  { component: C06Component, routes: noRoutes },
-  'Chapter 6: exercise (completed)': { component: C06ecComponent, routes: noRoutes },
-  'Chapter 7':  { component: C07Component, routes: noRoutes },
-  'Chapter 7: exercise (completed)': { component: C07ecComponent, routes: noRoutes },
-  'Chapter 8':  { component: C08Component, routes: noRoutes },
-  'Chapter 9':  { component: C09Component, routes: noRoutes },
-  'Chapter 9: exercise (completed)': { component: C09ecComponent, routes: noRoutes },
-  'Chapter 10': { component: C10Component, routes: noRoutes },
-  'Chapter 11': { component: C11Component, routes: noRoutes },
-  'Chapter 12': { component: C12Component, routes: noRoutes },
-  'Chapter 12: exercise (completed)': { component: C12ecComponent, routes: noRoutes }
+  /* 1*/ 'Chapter 1: Install QuickStart': { component: C01Component, routes: noRoutes },
+  /* 2*/ 'Chapter 2: Simple binding': { component: C02Component, routes: noRoutes },
+  /* 3*/ 'Chapter 2: Simple binding exercise (completed)': { component: C02ecComponent, routes: noRoutes },
+  /* 4*/ 'Chapter 3: Two-way binding': { component: C03Component, routes: noRoutes },
+  /* 5*/ 'Chapter 3: Two-way binding exercise (completed)': { component: C03ecComponent, routes: noRoutes },
+  /* 6*/ 'Chapter 4: Model': { component: C04Component, routes: noRoutes },
+  /* 7*/ 'Chapter 5: Template file': { component: C05Component, routes: noRoutes },
+  /* 8*/ 'Chapter 6: List binding': { component: C06Component, routes: noRoutes },
+  /* 9*/ 'Chapter 6: List binding exercise (completed)': { component: C06ecComponent, routes: noRoutes },
+  /*10*/ 'Chapter 7: Multiple components and @Input:': { component: C07Component, routes: noRoutes },
+  /*11*/ 'Chapter 7: Multiple components exercise (completed)': { component: C07ecComponent, routes: noRoutes },
+  /*12*/ 'Chapter 8: @Output': { component: C08Component, routes: noRoutes },
+  /*13*/ 'Chapter 9: Services and DI': { component: C09Component, routes: noRoutes },
+  /*14*/ 'Chapter 9: Services exercise (completed)': { component: C09ecComponent, routes: noRoutes },
+  /*15*/ 'Chapter 10: Async with promises': { component: C10Component, routes: noRoutes },
+  /*16*/ 'Chapter 11: Async with observables': { component: C11Component, routes: noRoutes },
+  /*17*/ 'Chapter 12: Http': { component: C12Component, routes: noRoutes },
+  /*18*/ 'Chapter 12: Http exercise (completed)': { component: C12ecComponent, routes: noRoutes },
+  /*19*/ 'Chapter 13: Http update (extra)': { component: C13Component, routes: noRoutes },
 };
 
 @Directive( {selector: '[chapterView]'})
@@ -67,8 +68,8 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
-  currentChapter = 'Chapter 1';
   chapters = Object.keys(chapters);
+  currentChapter = this.chapters[0];
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

@@ -38,19 +38,8 @@ export class CustomerListComponent implements OnInit {
         },
         (errorMsg: string) => {
           this.isBusy = false;
-          alert(errorMsg);
+          alert(errorMsg); // Don't use alert!
         }
-      );
-  }
-
-  save(customer: Customer) {
-    if (!customer) { return; }
-    this.isBusy = true;
-    this.logger.log('Saving ...');
-    this.dataService.update(customer)
-      .subscribe(
-        () => this.isBusy = false,
-        () => this.isBusy = false
       );
   }
 

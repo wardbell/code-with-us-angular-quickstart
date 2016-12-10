@@ -43,6 +43,17 @@ export class CustomerListComponent implements OnInit {
       );
   }
 
+  save(customer: Customer) {
+    if (!customer) { return; }
+    this.isBusy = true;
+    this.logger.log('Saving ...');
+    this.dataService.update(customer)
+      .subscribe(
+        () => this.isBusy = false,
+        () => this.isBusy = false
+      );
+  }
+
   shift(increment: number) {
     let ix = increment + this.customers.findIndex(c => c === this.customer);
     ix = Math.min(this.customers.length - 1, Math.max(0, ix));

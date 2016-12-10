@@ -1,4 +1,4 @@
-/* tslint:disable:no-unused-variable */
+// Observable DataService
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';  // <-- import Http & Headers
 
@@ -18,6 +18,7 @@ import 'rxjs/add/observable/throw'; // <-- add rxjs Observable extensions used h
 export class DataService {
   private customersUrl = 'api/customers';
   private statesUrl = 'api/states';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(
     private http: Http,  // <-- inject http
@@ -48,10 +49,7 @@ export class DataService {
     return this.http.get(this.customersUrl)
       .map(response => response.json().data as Customer[])  // <-- extract data
       .do(custs => this.logger.log(`Got ${custs.length} customers`))
-      .catch((error: any) => {
-        this.logger.log(`An error occurred ${error}`);
-        return Observable.throw('Something bad happened with customers; please check the console');
-      });
+      .catch(error => this.handleError(error));
   }
 
   /** Get existing states as an Observable */
@@ -63,9 +61,27 @@ export class DataService {
         return response.json().data as string[];
       })  // <-- extract data
       .do(states => this.logger.log(`Got ${states.length} states`))
-      .catch((error: any) => {
-        this.logger.log(`An error occurred ${error}`);
-        return Observable.throw('Something bad happened with states; please check the console');
-      });
+      .catch(error => this.handleError(error));
   }
+
+  /** Update existing customer */
+  update(customer: Customer): Observable<any> {
+    const url = `${this.customersUrl}/${customer.id}`;
+    const result = this.http.put(url, customer, { headers: this.headers })
+      // .do(() => this.logger.log(`Saved customer ${customer.name}`))
+      .catch(error => this.handleError(error));
+
+    // Result is "cold". Ensure logging even if caller doesn't subscribe
+    result.subscribe(() => this.logger.log(`Saved customer ${customer.name}`));
+
+    return result;
+  }
+
+  /** Common Http Observable error handler */
+  private handleError(error: any): Observable<any> {
+    this.logger.log(`An error occurred ${error}`); // for demo purposes only
+    // re-throw user-facing message
+    return Observable.throw('Something bad happened; please check the console');
+  }
+
 }

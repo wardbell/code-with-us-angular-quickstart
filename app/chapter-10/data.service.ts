@@ -1,4 +1,3 @@
-// Observable DataService
 import { Injectable } from '@angular/core';
 
 import { Customer }  from './model';
