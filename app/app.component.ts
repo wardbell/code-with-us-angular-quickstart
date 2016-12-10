@@ -5,7 +5,6 @@ import {
 import { Location }       from '@angular/common';
 import { Router, Routes } from '@angular/router';
 
-import { AppComponent as FinalComponent } from './final/app.component';
 import { AppComponent as C01Component }   from './chapter-01/app.component';
 import { AppComponent as C02Component }   from './chapter-02/app.component';
 import { AppComponent as C02ecComponent } from './chapter-02-exercise-completed/app.component';
@@ -23,19 +22,12 @@ import { AppComponent as C09ecComponent } from './chapter-09-exercise-completed/
 import { AppComponent as C10Component }   from './chapter-10/app.component';
 import { AppComponent as C11Component }   from './chapter-11/app.component';
 import { AppComponent as C12Component }   from './chapter-12/app.component';
-import { AppComponent as C98Component }   from './chapter-98/app.component';
-import { AppComponent as C99Component }   from './chapter-99/app.component';
-
-import { routes as finalRoutes } from './final/app-routing.module';
-import { routes as c98Routes }   from './chapter-98/app.module';
-import { routes as c99Routes }   from './chapter-99/app.module';
+import { AppComponent as C12ecComponent }   from './chapter-12-exercise-completed/app.component';
 
 const noRoutes: Routes = [];
 
 // chapters: chapter components, some of which which have routes
 const chapters: { [index: string]: { component: any, routes: Routes } } = {
-
-  'Final':      { component: FinalComponent, routes: finalRoutes },
 
   'Chapter 1':  { component: C01Component, routes: noRoutes },
   'Chapter 2':  { component: C02Component, routes: noRoutes },
@@ -54,9 +46,7 @@ const chapters: { [index: string]: { component: any, routes: Routes } } = {
   'Chapter 10': { component: C10Component, routes: noRoutes },
   'Chapter 11': { component: C11Component, routes: noRoutes },
   'Chapter 12': { component: C12Component, routes: noRoutes },
-
-  'Chapter 98': { component: C98Component, routes: c98Routes },
-  'Chapter 99': { component: C99Component, routes: c99Routes },
+  'Chapter 12: exercise (completed)': { component: C12ecComponent, routes: noRoutes }
 };
 
 @Directive( {selector: '[chapterView]'})
