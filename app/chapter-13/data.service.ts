@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch'; // <-- add rxjs operator extensions used here
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/toPromise';
 
 import 'rxjs/add/observable/throw'; // <-- add rxjs Observable extensions used here
@@ -29,7 +30,7 @@ export class DataService {
     this.logger.log('Getting customers as a Promise via Http ...');
 
     return this.http.get(this.customersUrl) // <-- returns an observable
-      .toPromise()  // <-- convert immediately to a promise
+      .toPromise() // <-- convert immediately to a promise
       .then(response => {
         const custs = response.json().data as Customer[]; // <-- extract data from the response
         this.logger.log(`Got ${custs.length} customers`);
@@ -68,20 +69,23 @@ export class DataService {
   update(customer: Customer): Observable<any> {
     const url = `${this.customersUrl}/${customer.id}`;
     const result = this.http.put(url, customer, { headers: this.headers })
-      // .do(() => this.logger.log(`Saved customer ${customer.name}`))
-      .catch(error => this.handleError(error));
+      .do(response => this.logger.log(`Saved customer ${customer.name}`))
+      .share(); // execute once no matter how many subscriptions
 
-    // Result is "cold". Ensure logging even if caller doesn't subscribe
-    result.subscribe(() => this.logger.log(`Saved customer ${customer.name}`));
+    // Result is "cold" which means the update won't happen until something subscribes
+    // Ensure update happens even if caller doesn't subscribe
+    result.subscribe( // triggers the operation, making it "hot"
+      undefined, // only care about failure
+      error => this.handleError(error)
+    );
 
     return result;
   }
 
   /** Common Http Observable error handler */
   private handleError(error: any): Observable<any> {
-    this.logger.log(`An error occurred ${error}`); // for demo purposes only
+    this.logger.log(`An error occurred: ${error}`); // for demo purposes only
     // re-throw user-facing message
     return Observable.throw('Something bad happened; please check the console');
   }
-
 }

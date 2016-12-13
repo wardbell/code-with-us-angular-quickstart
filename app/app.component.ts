@@ -28,27 +28,27 @@ import { AppComponent as C13Component }   from './chapter-13/app.component';
 const noRoutes: Routes = [];
 
 // chapters: chapter components, some of which which have routes
-const chapters: { [index: string]: { component: any, routes: Routes } } = {
-  /* 1*/ 'Chapter 1: Install QuickStart': { component: C01Component, routes: noRoutes },
-  /* 2*/ 'Chapter 2: Simple binding': { component: C02Component, routes: noRoutes },
-  /* 3*/ 'Chapter 2: Simple binding exercise (completed)': { component: C02ecComponent, routes: noRoutes },
-  /* 4*/ 'Chapter 3: Two-way binding': { component: C03Component, routes: noRoutes },
-  /* 5*/ 'Chapter 3: Two-way binding exercise (completed)': { component: C03ecComponent, routes: noRoutes },
-  /* 6*/ 'Chapter 4: Model': { component: C04Component, routes: noRoutes },
-  /* 7*/ 'Chapter 5: Template file': { component: C05Component, routes: noRoutes },
-  /* 8*/ 'Chapter 6: List binding': { component: C06Component, routes: noRoutes },
-  /* 9*/ 'Chapter 6: List binding exercise (completed)': { component: C06ecComponent, routes: noRoutes },
-  /*10*/ 'Chapter 7: Multiple components and @Input:': { component: C07Component, routes: noRoutes },
-  /*11*/ 'Chapter 7: Multiple components exercise (completed)': { component: C07ecComponent, routes: noRoutes },
-  /*12*/ 'Chapter 8: @Output': { component: C08Component, routes: noRoutes },
-  /*13*/ 'Chapter 9: Services and DI': { component: C09Component, routes: noRoutes },
-  /*14*/ 'Chapter 9: Services exercise (completed)': { component: C09ecComponent, routes: noRoutes },
-  /*15*/ 'Chapter 10: Async with promises': { component: C10Component, routes: noRoutes },
-  /*16*/ 'Chapter 11: Async with observables': { component: C11Component, routes: noRoutes },
-  /*17*/ 'Chapter 12: Http': { component: C12Component, routes: noRoutes },
-  /*18*/ 'Chapter 12: Http exercise (completed)': { component: C12ecComponent, routes: noRoutes },
-  /*19*/ 'Chapter 13: Http update (bonus)': { component: C13Component, routes: noRoutes },
-};
+const chapters = [
+  /* 1*/ { title: 'Chapter 1: Install QuickStart', component: C01Component, routes: noRoutes },
+  /* 2*/ { title: 'Chapter 2: Simple binding', component: C02Component, routes: noRoutes },
+  /* 3*/ { title: 'Chapter 2: Simple binding exercise (completed)', component: C02ecComponent, routes: noRoutes },
+  /* 4*/ { title: 'Chapter 3: Two-way binding', component: C03Component, routes: noRoutes },
+  /* 5*/ { title: 'Chapter 3: Two-way binding exercise (completed)', component: C03ecComponent, routes: noRoutes },
+  /* 6*/ { title: 'Chapter 4: Model', component: C04Component, routes: noRoutes },
+  /* 7*/ { title: 'Chapter 5: Template file', component: C05Component, routes: noRoutes },
+  /* 8*/ { title: 'Chapter 6: List binding', component: C06Component, routes: noRoutes },
+  /* 9*/ { title: 'Chapter 6: List binding exercise (completed)', component: C06ecComponent, routes: noRoutes },
+  /*10*/ { title: 'Chapter 7: Multiple components and @Input:', component: C07Component, routes: noRoutes },
+  /*11*/ { title: 'Chapter 7: Multiple components exercise (completed)', component: C07ecComponent, routes: noRoutes },
+  /*12*/ { title: 'Chapter 8: @Output', component: C08Component, routes: noRoutes },
+  /*13*/ { title: 'Chapter 9: Services and DI', component: C09Component, routes: noRoutes },
+  /*14*/ { title: 'Chapter 9: Services exercise (completed)', component: C09ecComponent, routes: noRoutes },
+  /*15*/ { title: 'Chapter 10: Async with promises', component: C10Component, routes: noRoutes },
+  /*16*/ { title: 'Chapter 11: Async with observables', component: C11Component, routes: noRoutes },
+  /*17*/ { title: 'Chapter 12: Http', component: C12Component, routes: noRoutes },
+  /*18*/ { title: 'Chapter 12: Http exercise (completed)', component: C12ecComponent, routes: noRoutes },
+  /*19*/ { title: 'Chapter 13: Http update (bonus)', component: C13Component, routes: noRoutes },
+];
 
 @Directive( {selector: '[chapterView]'})
 export class ChapterViewDirective {
@@ -59,8 +59,8 @@ export class ChapterViewDirective {
   selector: 'my-app',
   template: `
     <label>Chapter to run:
-      <select [value]="currentChapter" (change)="onChapterChange($event.target.value)">
-        <option *ngFor="let chapter of chapters">{{chapter}}</option>
+      <select [value]="currentChapter" (change)="onChapterChange($event.target.selectedIndex)">
+        <option *ngFor="let chapter of chapters">{{chapter.title}}</option>
       </select>
     </label>
     <hr>
@@ -68,8 +68,10 @@ export class ChapterViewDirective {
 })
 export class AppComponent {
 
-  chapters = Object.keys(chapters);
-  currentChapter = this.chapters[0];
+  chapters = chapters;
+  currentChapterIx = 0;
+
+  get currentChapter() { return chapters[this.currentChapterIx].title; }
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
@@ -77,12 +79,13 @@ export class AppComponent {
     private router: Router,
     private viewContainerRef: ViewContainerRef) {
       // Set initial view
-      const resetRouterConfig = this.currentChapter !== 'Final';
-      this.onChapterChange(this.currentChapter, resetRouterConfig);
+      const resetRouterConfig = true;
+      this.onChapterChange(this.currentChapterIx, resetRouterConfig);
     }
 
-  onChapterChange(chapter: string, resetRouterConfig = true) {
-    const {component, routes} = chapters[chapter];
+  onChapterChange(index: number, resetRouterConfig = true) {
+    this.currentChapterIx = index;
+    const {component, routes} = chapters[index];
     this.setView(component);
     if (resetRouterConfig) {
       this.router.resetConfig(routes);

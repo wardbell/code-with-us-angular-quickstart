@@ -46,12 +46,14 @@ export class CustomerListComponent implements OnInit {
   save(customer: Customer) {
     if (!customer) { return; }
     this.isBusy = true;
-    this.logger.log('Saving ...');
-    this.dataService.update(customer)
-      .subscribe(
-        () => this.isBusy = false,
-        () => this.isBusy = false
-      );
+    this.logger.log(`Saving ${customer.name} ...`);
+    this.dataService.update(customer).subscribe(
+      () => this.isBusy = false,
+      () => {
+        this.isBusy = false;
+        alert('Save failed; please check the console'); // Don't use alert!
+      }
+    );
   }
 
   shift(increment: number) {
