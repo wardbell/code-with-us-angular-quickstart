@@ -17,11 +17,37 @@ export class AddressComponent implements OnInit {
 
   constructor(private dataService: DataService) { }
 
+  /*
+   * Mistakenly neglects to rebind the state _after_states arrive!
+   * Populating the state selector later breaks the binding
+   * causing the address to show the wrong state.
+   *
+   * See this by toggling address when it shows Katie O'Leary;
+   * notice that Chicago is shown in California (oops).
+   *
+   * Fixed in section 13.
+   */
+  // ngOnInit() {
+  //   this.dataService.getStates()
+  //     .subscribe(states => this.states = states);
+  // }
+
+  /*
+    * State binding problem "fixed".
+    * Hides current address state until `states` arrive.
+    *
+    * A better design: cache `states` in the data service,
+    * load them in the AppComponent,
+    * and retrieve synchronously here.
+    */
   ngOnInit() {
+    const previousState = this.address.state;
+    this.address.state = undefined;
+
     this.dataService.getStates()
-      .subscribe(
-        states => this.states = states,
-        (errorMsg: string) => alert(errorMsg) // Don't use alert!
-      );
+      .subscribe(states => {
+        this.states = states;
+        this.address.state = previousState;
+      });
   }
 }
