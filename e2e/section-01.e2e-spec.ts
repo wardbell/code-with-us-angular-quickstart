@@ -5,7 +5,7 @@ describe('QuickStart E2E Tests', function () {
   let expectedMsg = 'Hello Angular';
 
   beforeEach(function () {
-    browser.get('e2e/chapter-01.index.html');
+    browser.get('e2e/section-01.index.html');
   });
 
   it('should display: ' + expectedMsg, function () {

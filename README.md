@@ -1,4 +1,4 @@
-# Pluralsight: Code with John Papa and Ward Bell in Angular 2
+# Pluralsight: Code with John Papa and Ward Bell in Angular
 
 ## Install npm packages
 

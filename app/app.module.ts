@@ -3,28 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { AppModule as C01Module }   from './chapter-01/app.module';
-import { AppModule as C02Module }   from './chapter-02/app.module';
-import { AppModule as C02ecModule } from './chapter-02-exercise-completed/app.module';
-import { AppModule as C03Module }   from './chapter-03/app.module';
-import { AppModule as C03ecModule } from './chapter-03-exercise-completed/app.module';
-import { AppModule as C04Module }   from './chapter-04/app.module';
-import { AppModule as C05Module }   from './chapter-05/app.module';
-import { AppModule as C06Module }   from './chapter-06/app.module';
-import { AppModule as C06ecModule } from './chapter-06-exercise-completed/app.module';
-import { AppModule as C07Module }   from './chapter-07/app.module';
-import { AppModule as C07ecModule } from './chapter-07-exercise-completed/app.module';
-import { AppModule as C08Module }   from './chapter-08/app.module';
-import { AppModule as C09Module }   from './chapter-09/app.module';
-import { AppModule as C09ecModule } from './chapter-09-exercise-completed/app.module';
-import { AppModule as C10Module }   from './chapter-10/app.module';
-import { AppModule as C11Module }   from './chapter-11/app.module';
-import { AppModule as C12Module }   from './chapter-12/app.module';
-import { AppModule as C12ecModule } from './chapter-12-exercise-completed/app.module';
-import { AppModule as C13Module }   from './chapter-13/app.module';
+import { AppModule as C01Module }   from './section-01/app.module';
+import { AppModule as C02Module }   from './section-02/app.module';
+import { AppModule as C02ecModule } from './section-02-exercise-completed/app.module';
+import { AppModule as C03Module }   from './section-03/app.module';
+import { AppModule as C03ecModule } from './section-03-exercise-completed/app.module';
+import { AppModule as C04Module }   from './section-04/app.module';
+import { AppModule as C05Module }   from './section-05/app.module';
+import { AppModule as C06Module }   from './section-06/app.module';
+import { AppModule as C06ecModule } from './section-06-exercise-completed/app.module';
+import { AppModule as C07Module }   from './section-07/app.module';
+import { AppModule as C07ecModule } from './section-07-exercise-completed/app.module';
+import { AppModule as C08Module }   from './section-08/app.module';
+import { AppModule as C09Module }   from './section-09/app.module';
+import { AppModule as C09ecModule } from './section-09-exercise-completed/app.module';
+import { AppModule as C10Module }   from './section-10/app.module';
+import { AppModule as C11Module }   from './section-11/app.module';
+import { AppModule as C12Module }   from './section-12/app.module';
+import { AppModule as C12ecModule } from './section-12-exercise-completed/app.module';
+import { AppModule as C13Module }   from './section-13/app.module';
 
 
-import { AppComponent, ChapterViewDirective } from './app.component';
+import { AppComponent, SectionViewDirective } from './app.component';
 
 // in-mem-web-api and its test-data service
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -55,7 +55,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     InMemoryWebApiModule.forRoot(InMemoryDataService) // <-- register in-mem-web-api and its data
   ],
 
-  declarations: [AppComponent, ChapterViewDirective],
+  declarations: [AppComponent, SectionViewDirective],
   bootstrap: [AppComponent]
 })
 export class AppModule {
