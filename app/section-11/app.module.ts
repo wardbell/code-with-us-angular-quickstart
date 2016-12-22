@@ -11,20 +11,20 @@ import { DataService }   from './data.service';
 import { LoggerService } from './logger.service';
 
 @NgModule({
-  imports: [
+  imports: [                  // What stuff do I need?
     BrowserModule,
     FormsModule
   ],
-  declarations: [
+  declarations: [             // What's in my app module?
     AppComponent,
     AddressComponent,
     CustomerDetailComponent,
     CustomerListComponent
   ],
-  providers: [
+  providers: [                // What services do I provide?
     DataService,
     LoggerService
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ] // Where do I start?
 })
 export class AppModule { }

@@ -7,15 +7,15 @@ import { CustomerDetailComponent } from './customer-detail.component';
 import { CustomerListComponent }   from './customer-list.component';
 
 @NgModule({
-  imports: [
+  imports: [                  // What stuff do I need?
     BrowserModule,
     FormsModule
   ],
-  declarations: [
+  declarations: [             // What's in my app module?
     AppComponent,
     CustomerDetailComponent,
     CustomerListComponent
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ] // Where do I start?
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+import { RouterModule }  from '@angular/router';
 
 import { AppModule as C01Module }   from './section-01/app.module';
 import { AppModule as C02Module }   from './section-02/app.module';
@@ -28,7 +28,7 @@ import { AppComponent, SectionViewDirective } from './app.component';
 
 // in-mem-web-api and its test-data service
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService }  from './in-memory-data.service';
 
 @NgModule({
   imports: [
@@ -56,7 +56,8 @@ import { InMemoryDataService } from './in-memory-data.service';
   ],
 
   declarations: [AppComponent, SectionViewDirective],
+  // entryComponents: would list the dynamically loaded components
+  // for AOT/dead-code-removal but not needed for this JIT-only harness
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

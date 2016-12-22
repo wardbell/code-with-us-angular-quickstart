@@ -11,17 +11,17 @@ import { CustomerListComponent }   from './customer-list.component';
 import { DataService } from './data.service';
 
 @NgModule({
-  imports: [
+  imports: [                  // What stuff do I need?
     BrowserModule,
     FormsModule
   ],
-  declarations: [
+  declarations: [             // What's in my app module?
     AppComponent,
     AddressComponent,
     CustomerDetailComponent,
     CustomerListComponent
   ],
-  providers: [ DataService ],  // <-- provide it here
-  bootstrap: [ AppComponent ]
+  providers: [ DataService ], // What services do I provide?
+  bootstrap: [ AppComponent ] // Where do I start?
 })
 export class AppModule { }
