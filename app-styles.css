@@ -120,7 +120,7 @@ md-toolbar.dark {
 }
 
 .md-title-icon > i {
-    background-image: url("favicon.ico");
+    background-image: url("pluralsight.ico");
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: center center;
