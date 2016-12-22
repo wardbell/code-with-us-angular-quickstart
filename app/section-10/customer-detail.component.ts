@@ -15,7 +15,7 @@ export class CustomerDetailComponent {
   @Output()
   shift = new EventEmitter<number>();
 
-  hideAddress = false;
+  showAddress = true;
 
   left()  { this.shift.emit(-1); }
   right() { this.shift.emit(1); }

@@ -18,9 +18,9 @@
   </fieldset>
 
   <br>
-  <label><input type="checkbox" [(ngModel)]="hideAddress"/>Hide address</label>
+  <label><input type="checkbox" [(ngModel)]="showAddress"/>Show address</label>
 
-  <div *ngIf="!hideAddress">
+  <div *ngIf="showAddress">
     <h3>Address:</h3>
     <address-comp [address]="customer.address"></address-comp>
   </div>

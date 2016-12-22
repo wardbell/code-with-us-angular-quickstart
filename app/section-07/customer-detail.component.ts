@@ -12,7 +12,7 @@ export class CustomerDetailComponent {
   @Input()
   customer: Customer;
 
-  hideAddress = false;
+  showAddress = true;
 
   regions   = ['East', 'Midwest', 'North', 'South', 'West'];
   states    = ['California', 'Illinois', 'Jalisco', 'Quebec'];

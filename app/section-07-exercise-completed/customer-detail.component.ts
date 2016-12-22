@@ -12,5 +12,5 @@ export class CustomerDetailComponent {
   @Input()
   customer: Customer;
 
-  hideAddress = false;
+  showAddress = true;
 }

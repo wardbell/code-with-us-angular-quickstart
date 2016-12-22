@@ -56,7 +56,7 @@ export class AppComponent  {
 
   customer: Customer;
 
-  hideAddress = false;
+  showAddress = true;
 
   regions   = ['East', 'Midwest', 'North', 'South', 'West'];
 
