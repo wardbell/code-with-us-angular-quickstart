@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
-// [] means property binding - Component to DOM
-// () means event binding - DOM to Component
+// {{}} interpolation - Component to DOM
+// []   property binding - Component to DOM
+// ()   event binding - DOM to Component
 
 @Component({
   selector: 'my-app',
@@ -25,9 +26,9 @@ import { Component } from '@angular/core';
       <label>
         Region:
         <select (change)="regionChange($event.target.value)">
-          <option>East</option>
           <option>North</option>
           <option>South</option>
+          <option>East</option>
           <option>West</option>
         </select>
       </label>
@@ -55,14 +56,17 @@ import { Component } from '@angular/core';
 
 export class AppComponent  {
   name = 'Alex Smith';
-
-  hideAddress = false;
-  street = '123 Main Street';
   city = 'Anytown';
+  street = '123 Main Street';
   region = 'East';
+  hideAddress = false;
 
   image = 'favicon.ico';
   color = 'red';
+
+  addressClick() {
+    this.hideAddress = !this.hideAddress;
+  }
 
   clicked() {
     this.color = this.color === 'red' ? 'blue' : 'red';
@@ -74,9 +78,5 @@ export class AppComponent  {
 
   regionChange(region: string) {
     this.region = region;
-  }
-
-  addressClick() {
-    this.hideAddress = !this.hideAddress;
   }
 }

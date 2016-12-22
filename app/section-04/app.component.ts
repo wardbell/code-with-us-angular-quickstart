@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 
 import { Customer } from './model';
 
-// [] means property binding - Component to DOM
-// () means event binding - DOM to Component
-
 @Component({
   selector: 'my-app',
   template: `
@@ -53,9 +50,9 @@ import { Customer } from './model';
       <label>
         Region:
         <select [(ngModel)]="customer.address.region">
-          <option>East</option>
           <option>North</option>
           <option>South</option>
+          <option>East</option>
           <option>West</option>
         </select>
       </label>

@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
       Name:<br>
       <input [value]="name" placeholder="Customer name"> [value]="name"<br>
 
-      <input #nameBox [value]="name" (input)="name=nameBox.value" placeholder="Customer name">          #nameBox [value]="name" (input)="name=nameBox.value" <br>
+      <input #nameBox [value]="name" (input)="name=nameBox.value" placeholder="Customer name">           #nameBox [value]="name" (input)="name=nameBox.value" <br>
 
       <input [value]="name" (keyup)="nameChange($event.target.value)" placeholder="Customer name">       [value]="name" (keyup)="nameChange($event.target.value)"<br>
 
@@ -44,9 +44,9 @@ import { Component } from '@angular/core';
       <label>
         Region:
         <select (change)="regionChange($event.target.value)">
-          <option>East</option>
           <option>North</option>
           <option>South</option>
+          <option>East</option>
           <option>West</option>
         </select>
       </label>
@@ -57,11 +57,10 @@ import { Component } from '@angular/core';
 
 export class AppComponent  {
   name = 'Alex Smith';
-
-  hideAddress = false;
-  street = '123 Main Street';
   city = 'Anytown';
+  street = '123 Main Street';
   region = 'East';
+  hideAddress = false;
 
   addressClick() {
     this.hideAddress = !this.hideAddress;
