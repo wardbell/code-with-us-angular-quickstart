@@ -18,7 +18,7 @@ export class AddressComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   /*
-   * Mistakenly neglects to rebind the state _after_states arrive!
+   * Mistakenly neglects to rebind the state _after_ states arrive!
    * Populating the state selector later breaks the binding
    * causing the address to show the wrong state.
    *
