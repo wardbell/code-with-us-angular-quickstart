@@ -16,7 +16,8 @@
     <label>
       State:
       <select [(ngModel)]="address.state">
-        <option *ngFor="let state of states">{{state}}</option>
+        <!-- See https://github.com/angular/angular/issues/13578 -->
+        <option *ngFor="let state of states" [value]="state">{{state}}</option>
       </select>
     </label>
   </fieldset>
@@ -24,7 +25,7 @@
     <label>
       Region:
       <select [(ngModel)]="address.region">
-        <option *ngFor="let region of regions">{{region}}</option>
+        <option *ngFor="let region of regions" [value]="region">{{region}}</option>
       </select>
     </label>
   </fieldset>

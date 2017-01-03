@@ -17,6 +17,13 @@
       State:
       <select [(ngModel)]="address.state">
         <option *ngFor="let state of states">{{state}}</option>
+        <!-- Should have been:
+          <option *ngFor="let state of states" [value]="state">{{state}}</option>
+
+          Neglecting to bind [value] leads to incorrect rebinding of the option _after_ states arrive.
+          See https://github.com/angular/angular/issues/13578
+          Fixed in section 13.
+        -->
       </select>
     </label>
   </fieldset>

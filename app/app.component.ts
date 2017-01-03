@@ -29,25 +29,25 @@ const noRoutes: Routes = [];
 
 // sections: section components, some of which which have routes
 const sections = [
-  /* 1*/ { title: 'Section 1: Install QuickStart', component: C01Component, routes: noRoutes },
-  /* 2*/ { title: 'Section 2: Simple binding', component: C02Component, routes: noRoutes },
-  /* 3*/ { title: 'Section 2: Simple binding exercise (completed)', component: C02ecComponent, routes: noRoutes },
-  /* 4*/ { title: 'Section 3: Two-way binding', component: C03Component, routes: noRoutes },
-  /* 5*/ { title: 'Section 3: Two-way binding exercise (completed)', component: C03ecComponent, routes: noRoutes },
-  /* 6*/ { title: 'Section 4: Model', component: C04Component, routes: noRoutes },
-  /* 7*/ { title: 'Section 5: Template file', component: C05Component, routes: noRoutes },
-  /* 8*/ { title: 'Section 6: List binding', component: C06Component, routes: noRoutes },
-  /* 9*/ { title: 'Section 6: List binding exercise (completed)', component: C06ecComponent, routes: noRoutes },
-  /*10*/ { title: 'Section 7: Multiple components and @Input:', component: C07Component, routes: noRoutes },
-  /*11*/ { title: 'Section 7: Multiple components exercise (completed)', component: C07ecComponent, routes: noRoutes },
-  /*12*/ { title: 'Section 8: @Output', component: C08Component, routes: noRoutes },
-  /*13*/ { title: 'Section 9: Services and DI', component: C09Component, routes: noRoutes },
-  /*14*/ { title: 'Section 9: Services exercise (completed)', component: C09ecComponent, routes: noRoutes },
-  /*15*/ { title: 'Section 10: Async with promises', component: C10Component, routes: noRoutes },
-  /*16*/ { title: 'Section 11: Async with observables', component: C11Component, routes: noRoutes },
-  /*17*/ { title: 'Section 12: Http', component: C12Component, routes: noRoutes },
-  /*18*/ { title: 'Section 12: Http exercise (completed)', component: C12ecComponent, routes: noRoutes },
-  /*19*/ { title: 'Section 13: Http update (bonus)', component: C13Component, routes: noRoutes },
+  /* 0*/ { title: 'Section 1: Install QuickStart', component: C01Component, routes: noRoutes },
+  /* 1*/ { title: 'Section 2: Simple binding', component: C02Component, routes: noRoutes },
+  /* 2*/ { title: 'Section 2: Simple binding exercise (completed)', component: C02ecComponent, routes: noRoutes },
+  /* 3*/ { title: 'Section 3: Two-way binding', component: C03Component, routes: noRoutes },
+  /* 4*/ { title: 'Section 3: Two-way binding exercise (completed)', component: C03ecComponent, routes: noRoutes },
+  /* 5*/ { title: 'Section 4: Model', component: C04Component, routes: noRoutes },
+  /* 6*/ { title: 'Section 5: Template file', component: C05Component, routes: noRoutes },
+  /* 7*/ { title: 'Section 6: List binding', component: C06Component, routes: noRoutes },
+  /* 8*/ { title: 'Section 6: List binding exercise (completed)', component: C06ecComponent, routes: noRoutes },
+  /* 9*/ { title: 'Section 7: Multiple components and @Input:', component: C07Component, routes: noRoutes },
+  /*10*/ { title: 'Section 7: Multiple components exercise (completed)', component: C07ecComponent, routes: noRoutes },
+  /*11*/ { title: 'Section 8: @Output', component: C08Component, routes: noRoutes },
+  /*12*/ { title: 'Section 9: Services and DI', component: C09Component, routes: noRoutes },
+  /*13*/ { title: 'Section 9: Services exercise (completed)', component: C09ecComponent, routes: noRoutes },
+  /*14*/ { title: 'Section 10: Async with promises', component: C10Component, routes: noRoutes },
+  /*15*/ { title: 'Section 11: Async with observables', component: C11Component, routes: noRoutes },
+  /*16*/ { title: 'Section 12: Http', component: C12Component, routes: noRoutes },
+  /*17*/ { title: 'Section 12: Http exercise (completed)', component: C12ecComponent, routes: noRoutes },
+  /*18*/ { title: 'Section 13: Http update (bonus)', component: C13Component, routes: noRoutes },
 ];
 
 @Directive( {selector: '[sectionView]'})
@@ -59,8 +59,8 @@ export class SectionViewDirective {
   selector: 'my-app',
   template: `
     <label>Section to run:
-      <select [value]="currentSection" (change)="onSectionChange($event.target.selectedIndex)">
-        <option *ngFor="let section of sections">{{section.title}}</option>
+      <select [value]="currentSectionIx" (change)="onSectionChange($event.target.selectedIndex)">
+        <option *ngFor="let section of sections; let i = index" [value]="i">{{section.title}}</option>
       </select>
     </label>
     <hr>
@@ -70,8 +70,6 @@ export class AppComponent {
 
   sections = sections;
   currentSectionIx = 0;
-
-  get currentSection() { return sections[this.currentSectionIx].title; }
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
